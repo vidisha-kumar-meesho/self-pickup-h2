@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Meesho Pickup Point Referral</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f8f3ff;
+      color: #222;
+    }
+
+    .container {
+      max-width: 480px;
+      margin: 0 auto;
+      padding: 24px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 20px;
+      padding: 24px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+      margin-top: 24px;
+    }
+
+    .badge {
+      display: inline-block;
+      background: #ffe066;
+      color: #222;
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: bold;
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      color: #5b259f;
+      font-size: 26px;
+      line-height: 1.2;
+      margin: 0 0 12px 0;
+    }
+
+    .subtitle {
+      font-size: 15px;
+      line-height: 1.5;
+      margin-bottom: 20px;
+    }
+
+    label {
+      font-size: 14px;
+      font-weight: bold;
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    input {
+      width: 100%;
+      padding: 14px;
+      border-radius: 12px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+      box-sizing: border-box;
+      text-transform: uppercase;
+    }
+
+    button {
+      width: 100%;
+      border: none;
+      border-radius: 14px;
+      padding: 16px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 14px;
+    }
+
+    .primary {
+      background: #5b259f;
+      color: white;
+    }
+
+    .secondary {
+      background: #f43397;
+      color: white;
+    }
+
+    .copy {
+      background: #ffe066;
+      color: #222;
+    }
+
+    .result {
+      display: none;
+      margin-top: 20px;
+      padding: 16px;
+      border-radius: 14px;
+      background: #f7f0ff;
+      border: 1px solid #e1d2ff;
+    }
+
+    .error {
+      display: none;
+      margin-top: 16px;
+      padding: 12px;
+      border-radius: 10px;
+      background: #ffe5e5;
+      color: #a10000;
+      font-size: 14px;
+    }
+
+    .success-text {
+      font-size: 15px;
+      line-height: 1.5;
+      margin-bottom: 12px;
+    }
+
+    .ref-link {
+      word-break: break-all;
+      font-size: 13px;
+      background: white;
+      padding: 10px;
+      border-radius: 10px;
+      border: 1px solid #ddd;
+    }
+
+    .small-text {
+      font-size: 12px;
+      color: #666;
+      line-height: 1.4;
+      margin-top: 14px;
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <div class="card">
+      <div class="badge">Meesho Pickup Point Referral Program</div>
+
+      <h1>Generate Your Referral Link</h1>
+
+      <p class="subtitle">
+        Enter your Pickup Point Code below. We will fetch your referral link.
+        Share it with good shops in your area and earn when they become active Pickup Points.
+      </p>
+
+      <label for="pickupCode">Enter Pickup Point Code</label>
+      <input id="pickupCode" placeholder="Example: SPP17" />
+
+      <button class="primary" onclick="findReferralLink()">Get My Referral Link</button>
+
+      <div id="errorBox" class="error"></div>
+
+      <div id="resultBox" class="result">
+        <div class="success-text">
+          Your referral link is ready. Share this with shopkeepers who may want to become Meesho Pickup Point Partners.
+        </div>
+
+        <div id="referralLinkBox" class="ref-link"></div>
+
+        <button class="secondary" onclick="shareOnWhatsApp()">Share on WhatsApp</button>
+        <button class="copy" onclick="copyReferralLink()">Copy Referral Link</button>
+      </div>
+
+      <p class="small-text">
+        Referral incentive will be applicable only when the referred shop becomes eligible as per program rules.
+      </p>
+    </div>
+  </div>
+
+  <!-- Load your pickup point mapping file first -->
+  <script src="referral-data.js"></script>
+
+  <!-- Main page logic -->
+  <script>
+    let currentReferralLink = "";
+    let currentPickupCode = "";
+
+    function findReferralLink() {
+      const inputCode = document.getElementById("pickupCode").value.trim().toUpperCase();
+
+      const errorBox = document.getElementById("errorBox");
+      const resultBox = document.getElementById("resultBox");
+
+      errorBox.style.display = "none";
+      resultBox.style.display = "none";
+
+      if (!inputCode) {
+        errorBox.innerText = "Please enter your Pickup Point Code.";
+        errorBox.style.display = "block";
+        return;
+      }
+
+      if (typeof REFERRAL_DATA === "undefined") {
+        errorBox.innerText = "Referral data file is not loaded. Please check referral-data.js.";
+        errorBox.style.display = "block";
+        return;
+      }
+
+      const match = REFERRAL_DATA.find(item => {
+        return item.pickup_point_code.trim().toUpperCase() === inputCode;
+      });
+
+      if (!match) {
+        errorBox.innerText = "Pickup Point Code not found. Please check and try again.";
+        errorBox.style.display = "block";
+        return;
+      }
+
+      currentPickupCode = inputCode;
+      currentReferralLink = match.referral_link;
+
+      document.getElementById("referralLinkBox").innerText = currentReferralLink;
+      resultBox.style.display = "block";
+    }
+
+    function shareOnWhatsApp() {
+      if (!currentReferralLink) return;
+
+      const message = `Hello!
+
+Meesho Pickup Point banne ka mauka hai.
+
+Aap apni shop se nayi earning shuru kar sakte hain. Valmo parcels aapki shop par aayenge, customers OTP dekar parcel collect karenge.
+
+Register here:
+${currentReferralLink}
+
+- Meesho Pickup Point Program`;
+
+      // whatsapp:// opens the installed WhatsApp app directly (contact picker),
+      // instead of WhatsApp's web "Share on WhatsApp" landing page.
+      const whatsappUrl = "whatsapp://send?text=" + encodeURIComponent(message);
+
+      window.location.href = whatsappUrl;
+    }
+
+    function copyReferralLink() {
+      if (!currentReferralLink) return;
+
+      navigator.clipboard.writeText(currentReferralLink);
+      alert("Referral link copied!");
+    }
+  </script>
+
+</body>
+</html>
