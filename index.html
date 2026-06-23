@@ -1,251 +1,223 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Meesho Pickup Point Referral</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #f8f3ff;
-      color: #222;
-    }
-
-    .container {
-      max-width: 480px;
-      margin: 0 auto;
-      padding: 24px;
-    }
-
-    .card {
-      background: white;
-      border-radius: 20px;
-      padding: 24px;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
-      margin-top: 24px;
-    }
-
-    .badge {
-      display: inline-block;
-      background: #ffe066;
-      color: #222;
-      padding: 8px 12px;
-      border-radius: 999px;
-      font-size: 13px;
-      font-weight: bold;
-      margin-bottom: 16px;
-    }
-
-    h1 {
-      color: #5b259f;
-      font-size: 26px;
-      line-height: 1.2;
-      margin: 0 0 12px 0;
-    }
-
-    .subtitle {
-      font-size: 15px;
-      line-height: 1.5;
-      margin-bottom: 20px;
-    }
-
-    label {
-      font-size: 14px;
-      font-weight: bold;
-      display: block;
-      margin-bottom: 8px;
-    }
-
-    input {
-      width: 100%;
-      padding: 14px;
-      border-radius: 12px;
-      border: 1px solid #ccc;
-      font-size: 16px;
-      box-sizing: border-box;
-      text-transform: uppercase;
-    }
-
-    button {
-      width: 100%;
-      border: none;
-      border-radius: 14px;
-      padding: 16px;
-      font-size: 16px;
-      font-weight: bold;
-      cursor: pointer;
-      margin-top: 14px;
-    }
-
-    .primary {
-      background: #5b259f;
-      color: white;
-    }
-
-    .secondary {
-      background: #f43397;
-      color: white;
-    }
-
-    .copy {
-      background: #ffe066;
-      color: #222;
-    }
-
-    .result {
-      display: none;
-      margin-top: 20px;
-      padding: 16px;
-      border-radius: 14px;
-      background: #f7f0ff;
-      border: 1px solid #e1d2ff;
-    }
-
-    .error {
-      display: none;
-      margin-top: 16px;
-      padding: 12px;
-      border-radius: 10px;
-      background: #ffe5e5;
-      color: #a10000;
-      font-size: 14px;
-    }
-
-    .success-text {
-      font-size: 15px;
-      line-height: 1.5;
-      margin-bottom: 12px;
-    }
-
-    .ref-link {
-      word-break: break-all;
-      font-size: 13px;
-      background: white;
-      padding: 10px;
-      border-radius: 10px;
-      border: 1px solid #ddd;
-    }
-
-    .small-text {
-      font-size: 12px;
-      color: #666;
-      line-height: 1.4;
-      margin-top: 14px;
-      text-align: center;
-    }
-  </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Meesho Pickup Point Referral Program</title>
+  <meta name="description" content="Refer a good shopkeeper to become a Meesho Pickup Point Partner and earn a Rs.200 bonus." />
+  <link rel="stylesheet" href="styles.css" />
 </head>
-
 <body>
 
-  <div class="container">
-    <div class="card">
-      <div class="badge">Meesho Pickup Point Referral Program</div>
+  <main>
 
-      <h1>Generate Your Referral Link</h1>
-
-      <p class="subtitle">
-        Enter your Pickup Point Code below. We will fetch your referral link.
-        Share it with good shops in your area and earn when they become active Pickup Points.
-      </p>
-
-      <label for="pickupCode">Enter Pickup Point Code</label>
-      <input id="pickupCode" placeholder="Example: SPP17" />
-
-      <button class="primary" onclick="findReferralLink()">Get My Referral Link</button>
-
-      <div id="errorBox" class="error"></div>
-
-      <div id="resultBox" class="result">
-        <div class="success-text">
-          Your referral link is ready. Share this with shopkeepers who may want to become Meesho Pickup Point Partners.
-        </div>
-
-        <div id="referralLinkBox" class="ref-link"></div>
-
-        <button class="secondary" onclick="shareOnWhatsApp()">Share on WhatsApp</button>
-        <button class="copy" onclick="copyReferralLink()">Copy Referral Link</button>
+    <!-- ============================================================
+         1. HERO SECTION
+    ============================================================ -->
+    <section class="hero">
+      <div class="container hero-inner">
+        <span class="pill">Pickup Point Referral Program</span>
+        <h1 class="hero-title">Refer a Pickup Point.<br /><span class="accent">Earn &#8377;200 Bonus.</span></h1>
+        <p class="hero-sub">
+          Kisi achhe store ya dukandaar ko Meesho Pickup Point Partner banne ke
+          liye refer karein.
+        </p>
+        <a href="#generator" class="btn btn-cta btn-lg">Get My Referral Link</a>
       </div>
+    </section>
 
-      <p class="small-text">
-        Referral incentive will be applicable only when the referred shop becomes eligible as per program rules.
+    <!-- ============================================================
+         2. WHAT IS THIS PROGRAM?
+    ============================================================ -->
+    <section class="section">
+      <div class="container">
+        <div class="card info-card">
+          <div class="emoji-lg">&#129309;</div>
+          <h2 class="section-title">What is this program?</h2>
+          <p class="body-text">
+            Meesho Pickup Point Referral Program mein aap kisi trusted shopkeeper
+            ko refer kar sakte hain. Agar referred store Meesho Pickup Point ban
+            kar eligible activation complete karta hai, toh aap
+            <strong>&#8377;200 bonus</strong> kama sakte hain.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         3. WHO CAN YOU REFER?
+    ============================================================ -->
+    <section class="section section-tint">
+      <div class="container">
+        <h2 class="section-title center">Who can you refer?</h2>
+        <p class="section-lead center">Aise shopkeeper jinme yeh qualities ho:</p>
+        <div class="grid grid-cards">
+          <div class="card mini-card">
+            <span class="mini-icon">&#127978;</span>
+            <p>Area mein trusted shopkeeper</p>
+          </div>
+          <div class="card mini-card">
+            <span class="mini-icon">&#128342;</span>
+            <p>Shop regularly open rehti ho</p>
+          </div>
+          <div class="card mini-card">
+            <span class="mini-icon">&#128230;</span>
+            <p>Parcels safely rakhne ke liye jagah ho</p>
+          </div>
+          <div class="card mini-card">
+            <span class="mini-icon">&#128172;</span>
+            <p>Customer se achhe se baat karta ho</p>
+          </div>
+          <div class="card mini-card">
+            <span class="mini-icon">&#128241;</span>
+            <p>Mobile/WhatsApp use karna jaanta ho</p>
+          </div>
+          <div class="card mini-card">
+            <span class="mini-icon">&#9989;</span>
+            <p>Meesho guidelines follow kar sake</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         4. HOW IT WORKS
+    ============================================================ -->
+    <section class="section">
+      <div class="container">
+        <h2 class="section-title center">How it works</h2>
+        <div class="grid grid-steps">
+          <div class="card step-card">
+            <div class="step-num">1</div>
+            <span class="step-icon">&#9000;&#65039;</span>
+            <p>Apna Pickup Point Code enter karein</p>
+          </div>
+          <div class="card step-card">
+            <div class="step-num">2</div>
+            <span class="step-icon">&#128279;</span>
+            <p>Referral link generate hoga</p>
+          </div>
+          <div class="card step-card">
+            <div class="step-num">3</div>
+            <span class="step-icon">&#128241;</span>
+            <p>WhatsApp par referred shopkeeper ko share karein</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         5. IMPORTANT ELIGIBILITY CLAUSE
+    ============================================================ -->
+    <section class="section section-tint">
+      <div class="container">
+        <div class="card highlight-box">
+          <span class="highlight-icon">&#128161;</span>
+          <div>
+            <h3 class="highlight-title">Important eligibility</h3>
+            <p class="body-text">
+              Bonus tabhi applicable hoga jab referred Pickup Point
+              <strong>60 days tak active rahe</strong> ya
+              <strong>100 successful orders complete kare</strong> &mdash; jo bhi
+              pehle ho.
+            </p>
+            <p class="tnc-note">Terms and conditions applied.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         6. PINCODE / PRIORITY AREA SECTION
+         EDIT: Add or remove pincode chips below as needed.
+    ============================================================ -->
+    <section class="section">
+      <div class="container">
+        <h2 class="section-title center">Refer stores in priority areas</h2>
+        <p class="section-lead center">In pincodes ke stores ko refer karne par priority milti hai:</p>
+        <div class="chips" id="pincodeChips">
+          <span class="chip">440002</span>
+          <span class="chip">440032</span>
+          <span class="chip">440027</span>
+          <span class="chip">440009</span>
+          <span class="chip">440015</span>
+          <span class="chip">440017</span>
+          <span class="chip">440018</span>
+          <span class="chip">440014</span>
+          <span class="chip">440008</span>
+          <span class="chip">440024</span>
+          <span class="chip">440034</span>
+          <span class="chip">440025</span>
+          <span class="chip">440022</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         7. REFERRAL LINK GENERATOR
+    ============================================================ -->
+    <section class="section section-tint" id="generator">
+      <div class="container">
+        <div class="card generator-card">
+          <h2 class="section-title center">Generate your referral link</h2>
+          <p class="section-lead center">
+            Apna Pickup Point Code enter karein aur link paayein.
+          </p>
+
+          <label for="pickupCode" class="field-label">Enter your Pickup Point Code</label>
+          <input
+            type="text"
+            id="pickupCode"
+            class="text-input"
+            placeholder="Example: SPP17"
+            autocomplete="off"
+          />
+
+          <button class="btn btn-primary btn-block" id="generateBtn">
+            Generate Referral Link
+          </button>
+
+          <!-- Error message -->
+          <div id="errorBox" class="error-box" hidden></div>
+
+          <!-- Result (hidden until a valid code is entered) -->
+          <div id="resultBox" class="result-box" hidden>
+            <p class="result-label">Your referral link is ready &#127881;</p>
+            <div id="referralLinkBox" class="ref-link"></div>
+
+            <div class="result-actions">
+              <button class="btn btn-whatsapp btn-block" id="whatsappBtn">
+                <span class="btn-icon">&#128241;</span> Share on WhatsApp
+              </button>
+              <button class="btn btn-copy btn-block" id="copyBtn">
+                <span class="btn-icon">&#128203;</span> Copy Link
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============================================================
+       FOOTER
+  ============================================================ -->
+  <footer class="site-footer">
+    <div class="container">
+      <p>Meesho Pickup Point Referral Program</p>
+      <p class="footer-small">
+        Referral incentive applicable only when the referred shop becomes
+        eligible as per program rules. Terms and conditions applied.
       </p>
     </div>
-  </div>
+  </footer>
 
-  <!-- Load your pickup point mapping file first -->
+  <!-- Toast for copy feedback -->
+  <div id="toast" class="toast" hidden></div>
+
+  <!-- Load referral data first, then the page logic -->
   <script src="referral-data.js"></script>
-
-  <!-- Main page logic -->
-  <script>
-    let currentReferralLink = "";
-    let currentPickupCode = "";
-
-    function findReferralLink() {
-      const inputCode = document.getElementById("pickupCode").value.trim().toUpperCase();
-
-      const errorBox = document.getElementById("errorBox");
-      const resultBox = document.getElementById("resultBox");
-
-      errorBox.style.display = "none";
-      resultBox.style.display = "none";
-
-      if (!inputCode) {
-        errorBox.innerText = "Please enter your Pickup Point Code.";
-        errorBox.style.display = "block";
-        return;
-      }
-
-      if (typeof REFERRAL_DATA === "undefined") {
-        errorBox.innerText = "Referral data file is not loaded. Please check referral-data.js.";
-        errorBox.style.display = "block";
-        return;
-      }
-
-      const match = REFERRAL_DATA.find(item => {
-        return item.pickup_point_code.trim().toUpperCase() === inputCode;
-      });
-
-      if (!match) {
-        errorBox.innerText = "Pickup Point Code not found. Please check and try again.";
-        errorBox.style.display = "block";
-        return;
-      }
-
-      currentPickupCode = inputCode;
-      currentReferralLink = match.referral_link;
-
-      document.getElementById("referralLinkBox").innerText = currentReferralLink;
-      resultBox.style.display = "block";
-    }
-
-    function shareOnWhatsApp() {
-      if (!currentReferralLink) return;
-
-      const message = `Namaste!
-
-Meesho Pickup Point banne ka mauka hai.
-
-Aap apni shop se nayi earning shuru kar sakte hain. Aapko bas meesho parcels apni dukaan pe safely rakhna hai, customers OTP dekar parcel collect karenge.
-
-Register here:
-${currentReferralLink}`;
-
-      // whatsapp:// opens the installed WhatsApp app directly (contact picker),
-      // instead of WhatsApp's web "Share on WhatsApp" landing page.
-      const whatsappUrl = "whatsapp://send?text=" + encodeURIComponent(message);
-
-      window.location.href = whatsappUrl;
-    }
-
-    function copyReferralLink() {
-      if (!currentReferralLink) return;
-
-      navigator.clipboard.writeText(currentReferralLink);
-      alert("Referral link copied!");
-    }
-  </script>
-
+  <script src="script.js"></script>
 </body>
 </html>
